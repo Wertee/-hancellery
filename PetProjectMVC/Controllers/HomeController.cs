@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using PetProjectMVC.EF;
 using PetProjectMVC.Models;
 using System.Diagnostics;
 
@@ -7,10 +8,11 @@ namespace PetProjectMVC.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        private readonly EFDBContext _context;
+        public HomeController(EFDBContext con,ILogger<HomeController> logger)
         {
             _logger = logger;
+            _context = con;
         }
 
         public IActionResult Index()
