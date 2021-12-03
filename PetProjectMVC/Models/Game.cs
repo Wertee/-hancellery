@@ -5,10 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PetProjectMVC.Models
 {
-    public abstract class Product
+    public class Game
     {
         [Key]
         public int Id { get; set; }
@@ -18,8 +19,12 @@ namespace PetProjectMVC.Models
         public string? Description { get; set; }
 
         public int Stock { get; set; }
-
+        
         public byte[]? Image { get; set; }
+
+        public decimal Price { get; set; }
+
+        public string? Category { get; set; }
 
     }
 }

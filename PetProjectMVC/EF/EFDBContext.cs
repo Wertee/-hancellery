@@ -12,19 +12,15 @@ namespace PetProjectMVC.EF
     {
         public EFDBContext(DbContextOptions<EFDBContext> options) : base(options)
         {
+            
             Database.EnsureCreated();
-            Pens.Add(new Pen { Name = "Krauser", Description = "014ASD5", Color = "Blue",Stock=10 });
-            this.SaveChanges();
-            Pens.Add(new Pen { Name = "Corvina", Description = "Cor1", Color = "Blue", Stock = 5 });
-            this.SaveChanges();
-            Pencils.Add(new Pencil { Name = "SuperPen", Description = "SG1", Color = "Red", Stock = 3 });
-            this.SaveChanges();
-            Notebooks.Add(new Notebook { Name = "Mimimishka", Description = "SB21", Stock = 6,ListCount=64 });
-            this.SaveChanges();
+            //Games.Add(new Game { Name = "Ведьмак", Category = "RPG", Description="Ролевая игра с видом от третьего лица",Stock = 50,Price=1999M });
+            //Games.Add(new Game { Name = "World of Warcraft", Category = "MMO", Description = "Ролевая игра с видом от третьего лица", Stock = 50, Price = 999M });
+            //Games.Add(new Game { Name = "Battlefield 3099", Category = "Shooter", Description = "Ролевая игра с видом от третьего лица", Stock = 50, Price = 3600M });
+            //this.SaveChanges();
         }
 
-        DbSet<Pen> Pens { get; set; }
-        DbSet<Pencil> Pencils { get; set; }
-        DbSet<Notebook> Notebooks { get; set; }
+        public DbSet<Game> Games { get; set; }
+
     }
 }

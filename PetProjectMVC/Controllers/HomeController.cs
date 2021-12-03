@@ -2,6 +2,7 @@
 using PetProjectMVC.EF;
 using PetProjectMVC.Models;
 using System.Diagnostics;
+using System.IO;
 
 namespace PetProjectMVC.Controllers
 {
@@ -17,7 +18,39 @@ namespace PetProjectMVC.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            return View(_context.Games.ToList());
+        }
+        [HttpGet]
+        public IActionResult EditGame(int? id)
+        {
+            if(id == null)
+            {
+                return RedirectToAction("Index");
+            }
+
+            return View(_context.Games.Find(id));
+        }
+
+        [HttpPost]
+        public IActionResult EditGame(Game game, IFormFile uploadImage)
+        {
+            if (ModelState.IsValid)
+            {
+
+                if(uploadImage != null)
+                {
+                    using (var ms = new MemoryStream())
+                    {
+                        uploadImage.CopyTo(ms);
+                        game.Image = ms.ToArray();
+                    }
+                }
+
+
+                _context.Games.Update(game);
+                _context.SaveChanges();
+            }
+            return RedirectToAction("Index");
         }
 
         public IActionResult Privacy()

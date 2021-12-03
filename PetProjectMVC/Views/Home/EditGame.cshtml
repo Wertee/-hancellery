@@ -1,0 +1,34 @@
+﻿@model Game
+
+
+<form method="post" enctype="multipart/form-data">
+    <p>
+    <input type="text" asp-for="Name" value="@Model.Name" />
+    </p>
+    <p>
+        <input type="text" asp-for="Description" value="@Model.Description" />
+    </p>    
+    <p>
+    <input type="text" asp-for="Price" value="@Model.Price" />
+    </p>
+    <p>
+    <input type="number" asp-for="Stock" value="@Model.Stock" />
+    </p>
+    <p>
+    <input type="file" name="uploadImage" />
+    </p>
+    <p>
+    <input type="text" asp-for="Category" value="@Model.Category" />
+    </p>
+    <p>
+        <input type="submit" value="Сохранить" />
+    </p>
+
+
+
+
+
+
+
+    
+</form>
