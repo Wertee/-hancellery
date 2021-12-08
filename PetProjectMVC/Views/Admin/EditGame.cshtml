@@ -1,0 +1,70 @@
+﻿@model Game
+
+<div class="product-item">                
+@{
+    if (Model.Image != null)
+    {
+        <img src="data:image;base64,@Convert.ToBase64String(Model.Image)" />
+    }
+    else
+    {
+        <img src="https://html5book.ru/wp-content/uploads/2015/10/black-dress.jpg">
+    }
+}
+</div>
+
+
+<form method="post" enctype="multipart/form-data">
+    <table class="d-lg-table">
+        <tr>
+            <td>
+                <label>Название:</label>
+            </td>
+            <td>
+                <input type="text" asp-for="Name" value="@Model.Name" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Описание:</label>
+            </td>
+            <td>
+                <textarea asp-for="Description" value="@Model.Description"></textarea>
+            </td>
+        </tr>
+        
+        <tr>
+            <td>
+                <label>Цена:</label>
+            </td>
+            <td>
+                <input type="text" asp-for="Price" value="@Model.Price" />
+            </td>
+        </tr>
+        
+        <tr>
+            <td>
+                <label>Количество:</label>
+            </td>
+            <td>
+                <input type="number" asp-for="Stock" value="@Model.Stock" />
+            </td>
+
+        </tr>
+        <tr>
+            <td>
+                <label>Категория</label>
+            </td>
+            <td>
+                <input type="text" asp-for="Category" value="@Model.Category" />
+            </td>
+        </tr>
+    </table>
+        <p>
+            <label>Новое фото</label>
+            <input type="file" name="uploadImage" />
+        </p>
+
+        <input type="submit" value="Сохранить" />
+
+</form>

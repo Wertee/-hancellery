@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using PetProjectMVC.EF;
 using PetProjectMVC.Models;
 using System.Diagnostics;
@@ -6,20 +8,22 @@ using System.IO;
 
 namespace PetProjectMVC.Controllers
 {
-    public class HomeController : Controller
+    
+    public class AdminController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly ILogger<AdminController> _logger;
         private readonly EFDBContext _context;
-        public HomeController(EFDBContext con,ILogger<HomeController> logger)
+        public AdminController(EFDBContext con,ILogger<AdminController> logger)
         {
             _logger = logger;
             _context = con;
         }
-
+        [Authorize]
         public IActionResult Index()
         {
             return View(_context.Games.ToList());
         }
+        [Authorize]
         [HttpGet]
         public IActionResult EditGame(int? id)
         {
@@ -30,7 +34,7 @@ namespace PetProjectMVC.Controllers
 
             return View(_context.Games.Find(id));
         }
-
+        [Authorize]
         [HttpPost]
         public IActionResult EditGame(Game game, IFormFile uploadImage)
         {
@@ -51,11 +55,6 @@ namespace PetProjectMVC.Controllers
                 _context.SaveChanges();
             }
             return RedirectToAction("Index");
-        }
-
-        public IActionResult Privacy()
-        {
-            return View();
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
