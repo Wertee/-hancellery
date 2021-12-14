@@ -3,6 +3,9 @@
 @{
     ViewData["Title"] = "Home Page";
 }
+
+<a class="btn btn-primary" asp-controller="Roles" asp-action="index">Роли</a>
+
 <div class="row">
 @foreach (var item in Model)
 {

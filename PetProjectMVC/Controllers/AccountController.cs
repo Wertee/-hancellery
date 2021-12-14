@@ -30,7 +30,7 @@ namespace PetProjectMVC.Controllers
             
             if (ModelState.IsValid)
             {
-                User user = await _userManager.FindByNameAsync(loginModel.Name);
+                User user = await _userManager.FindByEmailAsync(loginModel.UserEmail);
                 if (user != null)
                 {
                     await _signInManager.SignOutAsync();
@@ -43,7 +43,17 @@ namespace PetProjectMVC.Controllers
                         }
                         else
                         {
-                            return RedirectToAction("Index", "Admin");
+                            var roles = await _userManager.GetRolesAsync(user);
+                            var isAdmin = roles.FirstOrDefault(x=>x=="Admin")?.Select(x=>x);
+                            if (isAdmin!=null)
+                            {
+                                return RedirectToAction("Index", "Admin");
+                            }
+                            else
+                            {
+                                return RedirectToAction("Index", "Product");
+                            }
+                            
                         }
                     }
                 }
@@ -68,11 +78,21 @@ namespace PetProjectMVC.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Register(string ret = "/")
+        public async Task<IActionResult> Register(CreateUserVM createUserVM)
         {
-            User user = new User { Email = "Pavlov@mail.ru", UserName = "Admin" };
-            var result = await _userManager.CreateAsync(user, "Fb4a6a22_a");
-            return RedirectToAction("Login");
+            //User user = new User { Email = "Pavlov@mail.ru", UserName = "Admin" };
+            //var result = await _userManager.CreateAsync(user, "Fb4a6a22_a");
+
+            User user = new User { Email = createUserVM.UserEmail };
+            user.UserName = createUserVM.UserEmail;
+            var result = await _userManager.CreateAsync(user, createUserVM.Password);
+            if (result.Succeeded)
+            {
+                return RedirectToAction("Login");
+            }
+            ModelState.AddModelError("", "Ошибка создания пользователя");
+            return View(createUserVM);
+            
         }
     }
 }

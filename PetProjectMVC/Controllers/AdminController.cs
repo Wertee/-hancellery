@@ -18,12 +18,12 @@ namespace PetProjectMVC.Controllers
             _logger = logger;
             _context = con;
         }
-        [Authorize]
+        [Authorize(Roles ="Admin")]
         public IActionResult Index()
         {
             return View(_context.Games.ToList());
         }
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public IActionResult EditGame(int? id)
         {
@@ -34,7 +34,7 @@ namespace PetProjectMVC.Controllers
 
             return View(_context.Games.Find(id));
         }
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public IActionResult EditGame(Game game, IFormFile uploadImage)
         {

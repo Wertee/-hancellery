@@ -1,4 +1,17 @@
-﻿
+﻿@model PetProjectMVC.Models.ViewModels.CreateUserVM
+
+<h3>Регистрация</h3>
+
 <form method="post">
-    <input type="submit" value="Создать админа" />
+    <p>
+        <label>Почта:</label>
+        <input type="text" asp-for="UserEmail" />
+    </p>
+
+    <p>
+        <label>Пароль:</label>
+        <input type="password" asp-for=Password />
+    </p>
+
+    <input type="submit" value="Зарегистрироваться" />
 </form>
