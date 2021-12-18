@@ -13,7 +13,6 @@ namespace PetProjectMVC.EF
     {
         public EFDBContext(DbContextOptions<EFDBContext> options) : base(options)
         {
-            
             Database.EnsureCreated();
             //Games.Add(new Game { Name = "Ведьмак", Category = "RPG", Description="Ролевая игра с видом от третьего лица",Stock = 50,Price=1999M });
             //Games.Add(new Game { Name = "World of Warcraft", Category = "MMO", Description = "Ролевая игра с видом от третьего лица", Stock = 50, Price = 999M });
@@ -22,6 +21,7 @@ namespace PetProjectMVC.EF
         }
 
         public DbSet<Game> Games { get; set; }
+        public DbSet<Category> Categories { get; set; }
 
     }
 }

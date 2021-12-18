@@ -4,8 +4,9 @@
     ViewData["Title"] = "Home Page";
 }
 
-<a class="btn btn-primary" asp-controller="Roles" asp-action="index">Роли</a>
-
+<a class="btn btn-primary" asp-controller="Roles" asp-action="Index">Роли</a>
+<a class="btn btn-primary" asp-controller="Category" asp-action="Index">Категории</a>
+<a class="btn btn-primary" asp-action="AddGame">Добавить игру</a>
 <div class="row">
 @foreach (var item in Model)
 {

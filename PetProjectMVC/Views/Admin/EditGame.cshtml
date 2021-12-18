@@ -56,7 +56,8 @@
                 <label>Категория</label>
             </td>
             <td>
-                <input type="text" asp-for="Category" value="@Model.Category" />
+               @* <input type="text" asp-for="Category" value="@Model.Category" />*@
+               @Html.DropDownListFor(model => model.CategoryId,ViewBag.Categories as SelectList)
             </td>
         </tr>
     </table>
