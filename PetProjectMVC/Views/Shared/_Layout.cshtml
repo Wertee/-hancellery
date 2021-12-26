@@ -23,6 +23,9 @@
                     </ul>
                 </div>
                 <div class="text-right">
+                    <span>
+                        @await Component.InvokeAsync("Cart")
+                    </span>
                     <a class="nav-link text-dark" asp-controller="Account" asp-action="Logout">Выход</a>
                 </div>
             </div>

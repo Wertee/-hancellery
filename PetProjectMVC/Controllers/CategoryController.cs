@@ -38,5 +38,30 @@ namespace PetProjectMVC.Controllers
 
             return View(category);
         }
+
+        public IActionResult EditCategory(int categoryId)
+        {
+            var category = _context.Categories.Find(categoryId);
+            if(category != null)
+            {
+                return View(category);
+            }
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public IActionResult EditCategory(Category category)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Categories.Update(category);
+                _context.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            return View(category);
+
+
+        }
     }
 }

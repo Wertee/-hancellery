@@ -37,7 +37,6 @@ namespace PetProjectMVC.Controllers
         [HttpPost]
         public IActionResult AddGame(Game game, IFormFile uploadImage)
         {
-          
                 if (uploadImage != null)
                 {
                     using (var ms = new MemoryStream())

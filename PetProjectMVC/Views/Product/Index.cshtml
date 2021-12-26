@@ -17,10 +17,10 @@
                     }
                  }
           <div class="product-list">
-            <h3>@item.Name</h3>
+              <a asp-action="ViewGame" asp-route-id = "@item.Id" class="text-lg-center">@item.Name</a>
               <span class="price">₽ @item.Price</span>
               <a asp-action="" asp-route-id = "@item.Id" class="button"></a>
-              <a asp-area="Product" asp-action="ViewGame" asp-route-id = "@item.Id" class="button">Просмотр</a>
+              <a asp-controller="Cart" asp-action="AddToCart" asp-route-id = "@item.Id" class="button">В корзину</a>
           </div>
       </div>
       </div>

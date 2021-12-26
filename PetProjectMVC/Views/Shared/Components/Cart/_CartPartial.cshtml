@@ -1,0 +1,11 @@
+﻿@model PetProjectMVC.Models.Cart
+
+<div>
+    <p>Корзина</p>
+    <hr />
+    <p>
+        <h6>Товар:@Model.ProductId количество @Model.Count</h6>
+        <a asp-controller="Cart" asp-action="Index">Оформить</a>
+    </p>
+</div>
+
