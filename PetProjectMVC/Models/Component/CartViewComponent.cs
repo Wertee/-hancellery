@@ -18,12 +18,12 @@ namespace PetProjectMVC.Models.Component
         }
         public IViewComponentResult Invoke()
         {
-            Cart cart = _context.Carts.Find(1);
-            if(cart == null)
-            {
-                return View("_CartPartial", new Cart() { CartId = 1, ProductId = 1, Count = 1 });
-            }
-            return View("_CartPartial", cart);
+            //Cart cart = _context.Carts.Find(1);
+            //if (cart == null)
+            //{
+
+            //}
+            return View("_CartPartial");
         }
     }
 }

@@ -13,6 +13,7 @@ string identityCon = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=UserDB
 builder.Services.AddDbContext<EFDBContext>(options => options.UseSqlServer(connection));
 builder.Services.AddDbContext<GameStoreIdentityContext>(options => options.UseSqlServer(identityCon));
 builder.Services.AddIdentity<User, IdentityRole>().AddEntityFrameworkStores<GameStoreIdentityContext>().AddDefaultTokenProviders();
+builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
 var app = builder.Build();
 
