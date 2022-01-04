@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using PetProjectMVC.Controllers;
 using PetProjectMVC.EF;
 using PetProjectMVC.Models;
 using System;
@@ -12,18 +13,16 @@ namespace PetProjectMVC.Models.Component
     public class CartViewComponent:ViewComponent
     {
         private EFDBContext _context;
-        public CartViewComponent(EFDBContext con)
+        private IServiceProvider _services;
+        public CartViewComponent(EFDBContext con, IServiceProvider services)
         {
             _context = con;
+            _services = services;
         }
         public IViewComponentResult Invoke()
         {
-            //Cart cart = _context.Carts.Find(1);
-            //if (cart == null)
-            //{
-
-            //}
-            return View("_CartPartial");
+            Cart cart = Cart.GetCart(_services);
+            return View("_CartPartial",cart);
         }
     }
 }

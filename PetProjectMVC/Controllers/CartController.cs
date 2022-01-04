@@ -22,8 +22,8 @@ namespace PetProjectMVC.Controllers
 
         public IActionResult Index()
         {
-            var cart = GetCart();
-            return View();
+            Cart cart = Cart.GetCart(_services);
+            return View(cart);
         }
      
         public IActionResult AddToCart(int id)
@@ -37,27 +37,28 @@ namespace PetProjectMVC.Controllers
         }
 
 
-        public Cart GetCart()
-        {
-            ISession session = _services.GetRequiredService<IHttpContextAccessor>()?.HttpContext.Session;
-            var context = _services.GetService<EFDBContext>();
-            var count = _context.CartItems.Select(x => x.CartId).Distinct().Count(); //поиск сколько всего корзин
-            var ccc = session.GetString("CartId");
-            string cartId = session.GetString("CartId") ?? (++count).ToString();
-            session.SetString("CartId", cartId);
-            return new Cart { Id = cartId };
-        }
+        //public Cart GetCart()
+        //{
+        //    ISession session = _services.GetRequiredService<IHttpContextAccessor>()?.HttpContext.Session;
+        //    var context = _services.GetService<EFDBContext>();
+        //    var count = _context.CartItems.Select(x => x.CartId).Distinct().Count();
+        //    var ccc = session.GetString("CartId");
+        //    string cartId = session.GetString("CartId") ?? (++count).ToString();
+        //    session.SetString("CartId", cartId);
+        //    var cartItems = _context.CartItems.Where(x => x.CartId == cartId).ToList();
+        //    return new Cart { Id = cartId, CartItems = cartItems };
+        //}
 
         public void AddGame(Game game, int amount)
         {
-            var cart = GetCart();
-            var cartItems = _context.CartItems.Where(x => x.CartId == cart.Id).ToList();
+            var cart = Cart.GetCart(_services);
+            
             if (game != null)
             {
-                var item = cartItems.Where(x => x.GameId == game.Id).FirstOrDefault();
+                var item = cart.CartItems.Where(x => x.GameId == game.Id).FirstOrDefault();
                 if (item == null)
                 {
-                    _context.CartItems.Add(new CartItem() { GameId = game.Id, CartId = cart.Id, Amount = amount });
+                    _context.CartItems.Add(new CartItem() { GameId = game.Id, CartId = cart.Id, Amount = amount});
                     
                 }
                 else

@@ -1,12 +1,11 @@
-﻿
-@model List<Game>
-@{
-    ViewData["Title"] = "Home Page";
-}
+﻿@model List<Game>
 
-<a class="btn btn-primary" asp-controller="Roles" asp-action="Index">Роли</a>
-<a class="btn btn-primary" asp-controller="Category" asp-action="Index">Категории</a>
-<a class="btn btn-primary" asp-action="AddGame">Добавить игру</a>
+<div class="mb-3">
+    <a class="btn btn-primary" asp-controller="Roles" asp-action="Index">Роли</a>
+    <a class="btn btn-primary" asp-controller="Category" asp-action="Index">Категории</a>
+    <a class="btn btn-primary" asp-action="AddGame">Добавить игру</a>
+
+</div>
 <div class="row">
 @foreach (var item in Model)
 {

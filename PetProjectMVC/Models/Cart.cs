@@ -1,4 +1,5 @@
 ﻿using PetProjectMVC.EF;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -13,22 +14,22 @@ namespace PetProjectMVC.Models
         public string Id { get; set; }
         public List<CartItem> CartItems = new List<CartItem>();
 
+        private readonly EFDBContext _context;
+        private IServiceProvider _services;
 
-        //public void AddGame(Game game,int amount)
-        //{
-        //    if(game != null)
-        //    {
-        //        var items = CartItems.Where(x => x.GameId == game.Id).FirstOrDefault();
-        //        if(items == null)
-        //        {
-        //            CartItems.Add(new CartItem() { GameId = game.Id, CartId = Id, Amount = amount });
-        //        }
-        //        else
-        //        {
-        //            items.Amount += amount;
-        //        }
-        //    }
-            
-        //}
+        public Cart(EFDBContext con)
+        {
+            _context = con;
+        }
+        public static Cart GetCart(IServiceProvider services)
+        {
+            ISession session = services.GetRequiredService<IHttpContextAccessor>()?.HttpContext.Session;
+            var context = services.GetService<EFDBContext>();
+            var count = context.CartItems.Select(x => x.CartId).Distinct().Count();
+            string cartId = session.GetString("CartId") ?? (++count).ToString();
+            session.SetString("CartId", cartId);
+            var cartItems = context.CartItems.Include(g=>g.Game).Where(x => x.CartId == cartId).ToList();
+            return new Cart(context) { Id = cartId, CartItems = cartItems };
+        }
     }
 }

@@ -80,9 +80,6 @@ namespace PetProjectMVC.Controllers
         [HttpPost]
         public async Task<IActionResult> Register(CreateUserVM createUserVM)
         {
-            //User user = new User { Email = "Pavlov@mail.ru", UserName = "Admin" };
-            //var result = await _userManager.CreateAsync(user, "Fb4a6a22_a");
-
             User user = new User { Email = createUserVM.UserEmail };
             user.UserName = createUserVM.UserEmail;
             var result = await _userManager.CreateAsync(user, createUserVM.Password);
