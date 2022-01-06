@@ -1,8 +1,8 @@
 ﻿@model Cart
 
 <div>
-        Корзина: @Model.CartItems.Sum(x=>x.Amount).ToString() товаров - @Model.CartItems.Sum(x=>x.Game.Price * x.Amount) Р
-        <br />
-        <a asp-controller="Cart" asp-action="Index">Оформить</a>
+    <p class="nav-link text-dark">
+        <a asp-controller="Cart" asp-action="Index">Корзина</a> @Model.CartItems.Sum(x=>x.Amount).ToString() товаров - @Model.CartItems.Sum(x=>x.Game.Price * x.Amount) Р
+    </p>
 </div>
 

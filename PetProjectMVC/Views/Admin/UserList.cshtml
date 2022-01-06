@@ -1,0 +1,15 @@
+﻿@model IEnumerable<PetProjectMVC.Models.User>
+
+<h2>Список пользователей</h2>
+<table class="table">
+@foreach (var user in Model)
+{
+    <tr>
+        <td>@user.Email</td>
+        <td>
+            <a class="btn btn-primary" asp-controller="Roles" asp-action="Edit" asp-route-userId="@user.Id">Права доступа</a>
+            <a class="btn btn-primary" asp-controller="Account" asp-action="EditUser" asp-route-userId="@user.Id">Изменить</a>
+        </td>
+    </tr>
+}
+</table>

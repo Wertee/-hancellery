@@ -15,16 +15,22 @@ namespace PetProjectMVC.Controllers
     {
         private readonly ILogger<AdminController> _logger;
         private readonly EFDBContext _context;
-        public AdminController(EFDBContext con,ILogger<AdminController> logger)
+        private readonly UserManager<User> _userManager;
+        public AdminController(EFDBContext con,ILogger<AdminController> logger,UserManager<User> userM)
         {
             _logger = logger;
             _context = con;
+            _userManager = userM;
         }
         [Authorize(Roles ="Admin")]
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
+            var user = await GetCurrentUser();
+            string userName = user.UserName;
             return View(_context.Games.Include(c => c.Category).ToList());
         }
+
+        public IActionResult UserList() => View(_userManager.Users.ToList());
 
         [Authorize(Roles = "Admin")]
         public IActionResult AddGame()
@@ -87,6 +93,12 @@ namespace PetProjectMVC.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        public async Task<User> GetCurrentUser()
+        {
+            var user = await _userManager.GetUserAsync(HttpContext.User);
+            return user;
         }
     }
 }

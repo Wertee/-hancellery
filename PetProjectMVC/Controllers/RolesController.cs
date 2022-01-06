@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using PetProjectMVC.Models;
 using PetProjectMVC.Models.ViewModels;
@@ -10,6 +11,7 @@ using System.Threading.Tasks;
 
 namespace PetProjectMVC.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class RolesController : Controller
     {
         private RoleManager<IdentityRole> _roleManager;
@@ -47,14 +49,12 @@ namespace PetProjectMVC.Controllers
         {
             var role = await _roleManager.FindByIdAsync(id);
 
-            if(role != null)
+            if (role != null)
             {
                 var result = await _roleManager.DeleteAsync(role);
             }
             return RedirectToAction("Index");
         }
-
-        public IActionResult UserList() => View(_userManager.Users.ToList());
 
         public async Task<IActionResult> Edit(string userId)
         {
@@ -93,7 +93,7 @@ namespace PetProjectMVC.Controllers
 
                 await _userManager.RemoveFromRolesAsync(user, removedRoles);
 
-                return RedirectToAction("UserList");
+                return RedirectToAction("UserList","Admin");
 
             }
             return NotFound();

@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using PetProjectMVC.EF;
 using PetProjectMVC.Models;
 using PetProjectMVC.Models.ViewModels;
 
@@ -10,11 +11,13 @@ namespace PetProjectMVC.Controllers
     {
         private UserManager<User> _userManager;
         private SignInManager<User> _signInManager;
+        private GameStoreIdentityContext _identityContext;
 
-        public AccountController(UserManager<User> userM,SignInManager<User> sign)
+        public AccountController(UserManager<User> userM,SignInManager<User> sign,GameStoreIdentityContext con)
         {
             _userManager = userM;
             _signInManager = sign;
+            _identityContext = con;
         }
 
         public IActionResult Login(string returnURL)
@@ -90,6 +93,25 @@ namespace PetProjectMVC.Controllers
             ModelState.AddModelError("", "Ошибка создания пользователя");
             return View(createUserVM);
             
+        }
+
+        [Authorize(Roles = "Admin")]
+        public IActionResult EditUser(string userId)
+        {
+            var user = _userManager.Users.Where(x => x.Id == userId).FirstOrDefault();
+            EditUserVM model = new EditUserVM { UserId = userId, UserName = user.UserName, UserLastName = "none", UserEmail = user.Email };
+            return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> EditUser(EditUserVM model)
+        {
+            var user = _userManager.Users.Where(x => x.Id == model.UserId).FirstOrDefault();
+            user.UserName = model.UserName;
+            user.Email = model.UserEmail;
+            await _userManager.UpdateAsync(user);
+            await _identityContext.SaveChangesAsync();
+            return RedirectToAction("UserList", "Admin");
         }
     }
 }

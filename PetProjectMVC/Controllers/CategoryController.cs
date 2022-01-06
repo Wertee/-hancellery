@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using PetProjectMVC.EF;
 using PetProjectMVC.Models;
 using System;
@@ -9,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace PetProjectMVC.Controllers
 {
+    [Authorize(Roles ="Admin")]
     public class CategoryController:Controller
     {
         private readonly EFDBContext _context;

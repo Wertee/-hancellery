@@ -1,0 +1,21 @@
+﻿@model PetProjectMVC.Models.ViewModels.EditUserVM
+<h2>Вход в приложение</h2>
+<form method="post" asp-controller="Account" asp-action="EditUser">
+
+    <div asp-validation-summary="ModelOnly"></div>
+    <input type="hidden" asp-for=UserId value="@Model.UserId" />
+    <div>
+        <label asp-for="UserEmail">Почта</label><br />
+        <input asp-for="UserEmail" value="@Model.UserEmail" />
+        <span asp-validation-for="UserEmail"></span>
+    </div>
+        <div>
+        <label asp-for="UserName">Имя пользователя</label><br />
+        <input asp-for="UserName" value="@Model.UserName" />
+        <span asp-validation-for="UserName"></span>
+    </div>
+    <br />
+    <div>
+        <input class="btn btn-primary" type="submit" value="Сохранить" />
+    </div>
+</form>
