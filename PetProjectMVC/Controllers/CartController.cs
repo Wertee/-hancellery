@@ -71,6 +71,20 @@ namespace PetProjectMVC.Controllers
             }
         }
 
+        public IActionResult RemoveFromCart(int gameId)
+        {
+            var cart = Cart.GetCart(_services);
+            var removedItem = _context.CartItems.Where(x => x.GameId == gameId && x.CartId == cart.Id).FirstOrDefault();
+            if(removedItem != null)
+            {
+                _context.CartItems.Remove(removedItem);
+                _context.SaveChanges();
+            }
+            return RedirectToAction("Index");
+            
+
+        }
+
 
     }
 }

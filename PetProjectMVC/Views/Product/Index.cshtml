@@ -20,7 +20,12 @@
               <a asp-action="ViewGame" asp-route-id = "@item.Id" class="text-lg-center">@item.Name</a>
               <span class="price">₽ @item.Price</span>
               <a asp-action="" asp-route-id = "@item.Id" class="button"></a>
-              <a asp-controller="Cart" asp-action="AddToCart" asp-route-id = "@item.Id" class="button">В корзину</a>
+              if(@item.Stock>0){
+                <a asp-controller="Cart" asp-action="AddToCart" asp-route-id = "@item.Id" class="button">В корзину</a>
+              }else{
+                  <p class="text">Нет в наличии</p>
+              }
+              
           </div>
       </div>
       </div>

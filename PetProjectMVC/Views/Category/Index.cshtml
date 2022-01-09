@@ -15,6 +15,9 @@
             <td>
                 <a class="btn btn-primary" asp-action="EditCategory" asp-route-categoryId="@category.Id">Изменить</a>        
             </td>
+            <td>
+                <a class="btn btn-primary" asp-action="RemoveCategory" asp-route-categoryId="@category.Id">Удалить</a> 
+            </td>
         </tr>
     }
     </table>

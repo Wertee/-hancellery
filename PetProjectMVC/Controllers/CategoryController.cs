@@ -62,8 +62,17 @@ namespace PetProjectMVC.Controllers
             }
 
             return View(category);
+        }
 
-
+        public IActionResult RemoveCategory(int categoryId)
+        {
+            var category = _context.Categories.Find(categoryId);
+            if(category != null)
+            {
+                _context.Categories.Remove(category);
+                _context.SaveChanges();
+            }
+            return RedirectToAction("Index");
         }
     }
 }
