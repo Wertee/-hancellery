@@ -14,6 +14,5 @@ namespace PetProjectMVC.Models
         public string PhoneNumber { get; set; }
         public decimal Total { get; set; }
         public List<OrderDetails> OrderDetails { get; set; }
-        public User User { get; set; }
     }
 }

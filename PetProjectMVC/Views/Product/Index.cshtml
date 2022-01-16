@@ -4,31 +4,38 @@
     ViewData["Title"] = "Home Page";
 }
 <div class="row">
-@foreach (var item in Model)
-{
-      <div class="column">
-      <div class="product-item">
+    @foreach (var item in Model)
+    {
+        <div class="column">
+            <div class="product-item">
                 @{
-                    if(item.Image != null)
+                    if (item.Image != null)
                     {
                         <img src="data:image;base64,@Convert.ToBase64String(item.Image)" />
-                    }else{
+                    }
+                    else
+                    {
                         <img src="https://html5book.ru/wp-content/uploads/2015/10/black-dress.jpg">
                     }
-                 }
-          <div class="product-list">
-              <a asp-action="ViewGame" asp-route-id = "@item.Id" class="text-lg-center">@item.Name</a>
-              <span class="price">₽ @item.Price</span>
-              <a asp-action="" asp-route-id = "@item.Id" class="button"></a>
-              if(@item.Stock>0){
-                <a asp-controller="Cart" asp-action="AddToCart" asp-route-id = "@item.Id" class="button">В корзину</a>
-              }else{
-                  <p class="text">Нет в наличии</p>
-              }
-              
-          </div>
-      </div>
-      </div>
-}
+                }
+                <div class="product-list">
+                    <a asp-action="ViewGame" asp-route-id="@item.Id" class="text-lg-center">@item.Name</a>
+                    <span class="price">₽ @item.Price</span>
+                    <a asp-action="" asp-route-id="@item.Id" class="button"></a>
+                    @{
+                        if (@item.Stock > 0)
+                        {
+                            <a asp-controller="Cart" asp-action="AddToCart" asp-route-id="@item.Id" class="button">В корзину</a>
+                        }
+                        else
+                        {
+                            <p class="text">Нет в наличии</p>
+                        }
+                    }
+
+                </div>
+            </div>
+        </div>
+    }
 
 </div>

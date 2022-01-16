@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace PetProjectMVC.EF
 {
-    public class EFDBContext:DbContext
+    public class EFDBContext : DbContext
     {
         public EFDBContext(DbContextOptions<EFDBContext> options) : base(options)
         {
@@ -20,6 +20,8 @@ namespace PetProjectMVC.EF
         public DbSet<Game> Games { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<CartItem> CartItems { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderDetails> OrderDetails { get; set; }
 
     }
 }
