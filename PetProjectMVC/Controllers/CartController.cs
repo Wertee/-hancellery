@@ -36,19 +36,6 @@ namespace PetProjectMVC.Controllers
             return RedirectToAction("Index", "Product");
         }
 
-
-        //public Cart GetCart()
-        //{
-        //    ISession session = _services.GetRequiredService<IHttpContextAccessor>()?.HttpContext.Session;
-        //    var context = _services.GetService<EFDBContext>();
-        //    var count = _context.CartItems.Select(x => x.CartId).Distinct().Count();
-        //    var ccc = session.GetString("CartId");
-        //    string cartId = session.GetString("CartId") ?? (++count).ToString();
-        //    session.SetString("CartId", cartId);
-        //    var cartItems = _context.CartItems.Where(x => x.CartId == cartId).ToList();
-        //    return new Cart { Id = cartId, CartItems = cartItems };
-        //}
-
         public void AddGame(Game game, int amount)
         {
             var cart = Cart.GetCart(_services);

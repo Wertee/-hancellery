@@ -15,7 +15,6 @@ namespace PetProjectMVC.Models
         public List<CartItem> CartItems = new List<CartItem>();
 
         private readonly EFDBContext _context;
-        private IServiceProvider _services;
 
         public Cart(EFDBContext con)
         {
@@ -25,6 +24,7 @@ namespace PetProjectMVC.Models
         {
             ISession session = services.GetRequiredService<IHttpContextAccessor>()?.HttpContext.Session;
             var context = services.GetService<EFDBContext>();
+            
             var count = context.CartItems.Select(x => x.CartId).Distinct().Count();
             string cartId = session.GetString("CartId") ?? (++count).ToString();
             session.SetString("CartId", cartId);
