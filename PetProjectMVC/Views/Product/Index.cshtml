@@ -21,7 +21,6 @@
                 <div class="product-list">
                     <a asp-action="ViewGame" asp-route-id="@item.Id" class="text-lg-center">@item.Name</a>
                     <span class="price">₽ @item.Price</span>
-                    <a asp-action="" asp-route-id="@item.Id" class="button"></a>
                     @{
                         if (@item.Stock > 0)
                         {

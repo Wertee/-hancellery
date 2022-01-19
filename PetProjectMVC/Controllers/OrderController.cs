@@ -60,6 +60,9 @@ namespace PetProjectMVC.Controllers
 
                 _context.Orders.Update(order);
                 await _context.SaveChangesAsync();
+
+                Cart.ClearCart(_services);
+
                 return RedirectToAction("Index", "Cart");
             }
             return View(order);
