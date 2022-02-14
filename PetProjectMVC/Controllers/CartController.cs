@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace PetProjectMVC.Controllers
 {
-    public class CartController:Controller
+    public class CartController : Controller
     {
         private readonly EFDBContext _context;
         private IServiceProvider _services;
@@ -25,11 +25,11 @@ namespace PetProjectMVC.Controllers
             Cart cart = Cart.GetCart(_services);
             return View(cart);
         }
-     
+
         public IActionResult AddToCart(int id)
         {
             Game game = _context.Games.Find(id);
-            if(game != null)
+            if (game != null)
             {
                 AddGame(game, 1);
             }
@@ -39,20 +39,19 @@ namespace PetProjectMVC.Controllers
         public void AddGame(Game game, int amount)
         {
             var cart = Cart.GetCart(_services);
-            
+
             if (game != null)
             {
                 var item = cart.CartItems.Where(x => x.GameId == game.Id).FirstOrDefault();
                 if (item == null)
                 {
-                    _context.CartItems.Add(new CartItem() { GameId = game.Id, CartId = cart.Id, Amount = amount});
-                    
+                    _context.CartItems.Add(new CartItem() { GameId = game.Id, CartId = cart.Id, Amount = amount });
                 }
                 else
                 {
                     item.Amount += amount;
                     _context.CartItems.Update(item);
-                    
+
                 }
                 _context.SaveChanges();
             }
@@ -62,13 +61,13 @@ namespace PetProjectMVC.Controllers
         {
             var cart = Cart.GetCart(_services);
             var removedItem = _context.CartItems.Where(x => x.GameId == gameId && x.CartId == cart.Id).FirstOrDefault();
-            if(removedItem != null)
+            if (removedItem != null)
             {
                 _context.CartItems.Remove(removedItem);
                 _context.SaveChanges();
             }
             return RedirectToAction("Index");
-            
+
 
         }
 

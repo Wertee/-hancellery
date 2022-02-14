@@ -10,19 +10,19 @@ using System.IO;
 
 namespace PetProjectMVC.Controllers
 {
-    
+
     public class AdminController : Controller
     {
         private readonly ILogger<AdminController> _logger;
         private readonly EFDBContext _context;
         private readonly UserManager<User> _userManager;
-        public AdminController(EFDBContext con,ILogger<AdminController> logger,UserManager<User> userM)
+        public AdminController(EFDBContext con, ILogger<AdminController> logger, UserManager<User> userM)
         {
             _logger = logger;
             _context = con;
             _userManager = userM;
         }
-        [Authorize(Roles ="Admin")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Index()
         {
             var user = await GetCurrentUser();
@@ -43,31 +43,31 @@ namespace PetProjectMVC.Controllers
         [HttpPost]
         public IActionResult AddGame(Game game, IFormFile uploadImage)
         {
-                if (uploadImage != null)
+            if (uploadImage != null)
+            {
+                using (var ms = new MemoryStream())
                 {
-                    using (var ms = new MemoryStream())
-                    {
-                        uploadImage.CopyTo(ms);
-                        game.Image = ms.ToArray();
-                    }
+                    uploadImage.CopyTo(ms);
+                    game.Image = ms.ToArray();
                 }
-                _context.Games.Add(game);
-                _context.SaveChanges();
-                return RedirectToAction("Index");
+            }
+            _context.Games.Add(game);
+            _context.SaveChanges();
+            return RedirectToAction("Index");
         }
 
         [Authorize(Roles = "Admin")]
         [HttpGet]
         public IActionResult EditGame(int? id)
         {
-            if(id == null)
+            if (id == null)
             {
                 return RedirectToAction("Index");
             }
 
             SelectList categories = new SelectList(_context.Categories, "Id", "Name");
             ViewBag.Categories = categories;
-
+            var game = _context.Games.Find(id);
             return View(_context.Games.Find(id));
         }
         [Authorize(Roles = "Admin")]
@@ -75,16 +75,16 @@ namespace PetProjectMVC.Controllers
         public IActionResult EditGame(Game game, IFormFile uploadImage)
         {
 
-                if(uploadImage != null)
+            if (uploadImage != null)
+            {
+                using (var ms = new MemoryStream())
                 {
-                    using (var ms = new MemoryStream())
-                    {
-                        uploadImage.CopyTo(ms);
-                        game.Image = ms.ToArray();
-                    }
+                    uploadImage.CopyTo(ms);
+                    game.Image = ms.ToArray();
                 }
-                _context.Games.Update(game);
-                _context.SaveChanges();
+            }
+            _context.Games.Update(game);
+            _context.SaveChanges();
 
             return RedirectToAction("Index");
         }

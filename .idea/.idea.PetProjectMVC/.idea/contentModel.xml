@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\Пользователь\AppData\Local\JetBrains\Rider2020.1\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\Пользователь\AppData\Local\JetBrains\Rider2020.1\resharper-host\Local\Transient\ReSharperHost\v201\SolutionCaches\_PetProjectMVC.-466452713.00" t="ExcludeRecursive" />
+    <e p="C:\Users\Пользователь\AppData\Roaming\JetBrains\Rider2020.1\extensions" t="IncludeRecursive" />
+    <e p="F:\learning Unity\PetProjectMVC" t="IncludeFlat">
+      <e p="packages" t="ExcludeRecursive" />
+      <e p="PetProjectMVC" t="IncludeRecursive">
+        <e p="appsettings.Development.json" t="Include" />
+        <e p="appsettings.json" t="Include" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Controllers" t="Include">
+          <e p="AccountController.cs" t="Include" />
+          <e p="AdminController.cs" t="Include" />
+          <e p="CartController.cs" t="Include" />
+          <e p="CategoryController.cs" t="Include" />
+          <e p="OrderController.cs" t="Include" />
+          <e p="ProductController.cs" t="Include" />
+          <e p="RolesController.cs" t="Include" />
+        </e>
+        <e p="EF" t="Include">
+          <e p="EFDBContext.cs" t="Include" />
+          <e p="GameStoreIdentityContext.cs" t="Include" />
+        </e>
+        <e p="Migrations" t="Include">
+          <e p="20211206183910_Ident.cs" t="Include" />
+          <e p="20211206183910_Ident.Designer.cs" t="Include" />
+          <e p="EFDBContextModelSnapshot.cs" t="Include" />
+        </e>
+        <e p="Models" t="Include">
+          <e p="Cart.cs" t="Include" />
+          <e p="CartItem.cs" t="Include" />
+          <e p="Category.cs" t="Include" />
+          <e p="Component" t="Include">
+            <e p="CartViewComponent.cs" t="Include" />
+            <e p="UserLoginViewComponent.cs" t="Include" />
+          </e>
+          <e p="ErrorViewModel.cs" t="Include" />
+          <e p="Game.cs" t="Include" />
+          <e p="Order.cs" t="Include" />
+          <e p="OrderDetails.cs" t="Include" />
+          <e p="User.cs" t="Include" />
+          <e p="ViewModels" t="Include">
+            <e p="ChangeRoleVM.cs" t="Include" />
+            <e p="CreateUserVM.cs" t="Include" />
+            <e p="EditUserVM.cs" t="Include" />
+            <e p="LoginModel.cs" t="Include" />
+          </e>
+        </e>
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="net6.0" t="Include">
+              <e p="PetProjectMVC.AssemblyInfo.cs" t="Include" />
+              <e p="PetProjectMVC.GlobalUsings.g.cs" t="Include" />
+              <e p="PetProjectMVC.RazorAssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="PetProjectMVC.csproj" t="IncludeRecursive" />
+        <e p="Program.cs" t="Include" />
+        <e p="Properties" t="Include">
+          <e p="launchSettings.json" t="Include" />
+        </e>
+        <e p="Views" t="Include">
+          <e p="_ViewImports.cshtml" t="Include" />
+          <e p="_ViewStart.cshtml" t="Include" />
+          <e p="Account" t="Include">
+            <e p="EditUser.cshtml" t="Include" />
+            <e p="Login.cshtml" t="Include" />
+            <e p="Register.cshtml" t="Include" />
+          </e>
+          <e p="Admin" t="Include">
+            <e p="AddGame.cshtml" t="Include" />
+            <e p="EditGame.cshtml" t="Include" />
+            <e p="Index.cshtml" t="Include" />
+            <e p="Privacy.cshtml" t="Include" />
+            <e p="UserList.cshtml" t="Include" />
+          </e>
+          <e p="Cart" t="Include">
+            <e p="Index.cshtml" t="Include" />
+          </e>
+          <e p="Category" t="Include">
+            <e p="AddCategory.cshtml" t="Include" />
+            <e p="EditCategory.cshtml" t="Include" />
+            <e p="Index.cshtml" t="Include" />
+          </e>
+          <e p="Order" t="Include">
+            <e p="Checkout.cshtml" t="Include" />
+          </e>
+          <e p="Product" t="Include">
+            <e p="Index.cshtml" t="Include" />
+            <e p="ViewGame.cshtml" t="Include" />
+          </e>
+          <e p="Roles" t="Include">
+            <e p="Create.cshtml" t="Include" />
+            <e p="Edit.cshtml" t="Include" />
+            <e p="Index.cshtml" t="Include" />
+          </e>
+          <e p="Shared" t="Include">
+            <e p="_CategoriesBar.cshtml" t="Include" />
+            <e p="_Layout.cshtml" t="Include" />
+            <e p="_Layout.cshtml.css" t="Include" />
+            <e p="_ValidationScriptsPartial.cshtml" t="Include" />
+            <e p="Components" t="Include">
+              <e p="Cart" t="Include">
+                <e p="_CartPartial.cshtml" t="Include" />
+              </e>
+              <e p="UserLogin" t="Include">
+                <e p="_UserLoginComponent.cshtml" t="Include" />
+              </e>
+            </e>
+          </e>
+        </e>
+        <e p="wwwroot" t="Include">
+          <e p="css" t="Include">
+            <e p="site.css" t="Include" />
+          </e>
+          <e p="favicon.ico" t="Include" />
+          <e p="js" t="Include">
+            <e p="site.js" t="Include" />
+          </e>
+          <e p="lib" t="Include">
+            <e p="bootstrap" t="Include">
+              <e p="dist" t="Include">
+                <e p="css" t="Include">
+                  <e p="bootstrap-grid.css" t="Include" />
+                  <e p="bootstrap-grid.css.map" t="Include" />
+                  <e p="bootstrap-grid.min.css" t="Include" />
+                  <e p="bootstrap-grid.min.css.map" t="Include" />
+                  <e p="bootstrap-grid.rtl.css" t="Include" />
+                  <e p="bootstrap-grid.rtl.css.map" t="Include" />
+                  <e p="bootstrap-grid.rtl.min.css" t="Include" />
+                  <e p="bootstrap-grid.rtl.min.css.map" t="Include" />
+                  <e p="bootstrap-reboot.css" t="Include" />
+                  <e p="bootstrap-reboot.css.map" t="Include" />
+                  <e p="bootstrap-reboot.min.css" t="Include" />
+                  <e p="bootstrap-reboot.min.css.map" t="Include" />
+                  <e p="bootstrap-reboot.rtl.css" t="Include" />
+                  <e p="bootstrap-reboot.rtl.css.map" t="Include" />
+                  <e p="bootstrap-reboot.rtl.min.css" t="Include" />
+                  <e p="bootstrap-reboot.rtl.min.css.map" t="Include" />
+                  <e p="bootstrap-utilities.css" t="Include" />
+                  <e p="bootstrap-utilities.css.map" t="Include" />
+                  <e p="bootstrap-utilities.min.css" t="Include" />
+                  <e p="bootstrap-utilities.min.css.map" t="Include" />
+                  <e p="bootstrap-utilities.rtl.css" t="Include" />
+                  <e p="bootstrap-utilities.rtl.css.map" t="Include" />
+                  <e p="bootstrap-utilities.rtl.min.css" t="Include" />
+                  <e p="bootstrap-utilities.rtl.min.css.map" t="Include" />
+                  <e p="bootstrap.css" t="Include" />
+                  <e p="bootstrap.css.map" t="Include" />
+                  <e p="bootstrap.min.css" t="Include" />
+                  <e p="bootstrap.min.css.map" t="Include" />
+                  <e p="bootstrap.rtl.css" t="Include" />
+                  <e p="bootstrap.rtl.css.map" t="Include" />
+                  <e p="bootstrap.rtl.min.css" t="Include" />
+                  <e p="bootstrap.rtl.min.css.map" t="Include" />
+                </e>
+                <e p="js" t="Include">
+                  <e p="bootstrap.bundle.js" t="Include" />
+                  <e p="bootstrap.bundle.js.map" t="Include" />
+                  <e p="bootstrap.bundle.min.js" t="Include" />
+                  <e p="bootstrap.bundle.min.js.map" t="Include" />
+                  <e p="bootstrap.esm.js" t="Include" />
+                  <e p="bootstrap.esm.js.map" t="Include" />
+                  <e p="bootstrap.esm.min.js" t="Include" />
+                  <e p="bootstrap.esm.min.js.map" t="Include" />
+                  <e p="bootstrap.js" t="Include" />
+                  <e p="bootstrap.js.map" t="Include" />
+                  <e p="bootstrap.min.js" t="Include" />
+                  <e p="bootstrap.min.js.map" t="Include" />
+                </e>
+              </e>
+              <e p="LICENSE" t="Include" />
+            </e>
+            <e p="jquery" t="Include">
+              <e p="dist" t="Include">
+                <e p="jquery.js" t="Include" />
+                <e p="jquery.min.js" t="Include" />
+                <e p="jquery.min.map" t="Include" />
+              </e>
+              <e p="LICENSE.txt" t="Include" />
+            </e>
+            <e p="jquery-validation" t="Include">
+              <e p="dist" t="Include">
+                <e p="additional-methods.js" t="Include" />
+                <e p="additional-methods.min.js" t="Include" />
+                <e p="jquery.validate.js" t="Include" />
+                <e p="jquery.validate.min.js" t="Include" />
+              </e>
+              <e p="LICENSE.md" t="Include" />
+            </e>
+            <e p="jquery-validation-unobtrusive" t="Include">
+              <e p="jquery.validate.unobtrusive.js" t="Include" />
+              <e p="jquery.validate.unobtrusive.min.js" t="Include" />
+              <e p="LICENSE.txt" t="Include" />
+            </e>
+          </e>
+        </e>
+      </e>
+      <e p="PetProjectMVC.sln" t="IncludeFlat" />
+    </e>
+  </component>
+</project>
