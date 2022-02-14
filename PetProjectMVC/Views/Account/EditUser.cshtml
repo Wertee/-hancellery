@@ -9,9 +9,14 @@
         <input asp-for="UserEmail" value="@Model.UserEmail" />
         <span asp-validation-for="UserEmail"></span>
     </div>
-        <div>
+    <div>
         <label asp-for="UserName">Имя пользователя</label><br />
         <input asp-for="UserName" value="@Model.UserName" />
+        <span asp-validation-for="UserName"></span>
+    </div>
+    <div>
+        <label asp-for="UserLastName">Фамилия пользователя</label><br />
+        <input asp-for="UserLastName" value="@Model.UserLastName" />
         <span asp-validation-for="UserName"></span>
     </div>
     <br />

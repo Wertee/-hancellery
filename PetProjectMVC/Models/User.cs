@@ -2,8 +2,8 @@
 
 namespace PetProjectMVC.Models
 {
-    public class User:IdentityUser
+    public class User : IdentityUser
     {
-        
+        public string UserLastName { get; set; }
     }
 }

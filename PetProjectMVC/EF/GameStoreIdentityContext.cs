@@ -4,11 +4,13 @@ using PetProjectMVC.Models;
 
 namespace PetProjectMVC.EF
 {
-    public class GameStoreIdentityContext:IdentityDbContext<User>
+    public class GameStoreIdentityContext : IdentityDbContext<User>
     {
         public GameStoreIdentityContext(DbContextOptions<GameStoreIdentityContext> options) : base(options)
         {
             Database.EnsureCreated();
         }
+
+        public DbSet<User> Users { get; set; }
     }
 }
