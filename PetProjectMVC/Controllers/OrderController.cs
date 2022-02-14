@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 namespace PetProjectMVC.Controllers
 {
     [Authorize]
-    public class OrderController : Controller // Дописать очистку корзины, после оформления заказа корзина должна очиститься
+    public class OrderController : Controller
     {
         private readonly IServiceProvider _services;
         private readonly UserManager<User> _userManager;

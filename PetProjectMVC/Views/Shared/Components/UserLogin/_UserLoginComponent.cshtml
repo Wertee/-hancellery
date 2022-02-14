@@ -1,12 +1,15 @@
 ﻿@model User
 <div>
 
-@if(Model == null){
-    <a class="nav-link text-dark" asp-controller="Account" asp-action="Login">Вход</a>
-}else{
-    <p class="nav-link text-dark">
-        @Model.UserName <a asp-controller="Account" asp-action="Logout">Выход</a>
-    </p>
-    
-}
+    @if (Model == null)
+    {
+        <a class="nav-link text-dark" asp-controller="Account" asp-action="Login">Вход</a>
+    }
+    else
+    {
+        <p class="nav-link text-dark">
+            @Model.UserName <a asp-controller="Account" asp-action="Logout">Выход</a>
+        </p>
+
+    }
 </div>
