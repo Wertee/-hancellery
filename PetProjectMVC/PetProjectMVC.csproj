@@ -22,4 +22,8 @@
     <Folder Include="Migrations\GameStoreIdentity\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="Views\Personal\Index.cshtml" />
+  </ItemGroup>
+
 </Project>

@@ -25,7 +25,7 @@ namespace PetProjectMVC.Controllers
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Index()
         {
-            var user = await GetCurrentUser();
+            var user = await _userManager.GetUserAsync(HttpContext.User);
             string userName = user.UserName;
             return View(_context.Games.Include(c => c.Category).ToList());
         }
@@ -93,12 +93,6 @@ namespace PetProjectMVC.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
-
-        public async Task<User> GetCurrentUser()
-        {
-            var user = await _userManager.GetUserAsync(HttpContext.User);
-            return user;
         }
     }
 }

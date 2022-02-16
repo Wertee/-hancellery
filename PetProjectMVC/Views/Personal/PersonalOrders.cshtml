@@ -1,0 +1,25 @@
+﻿@model List<Order>
+<h2>Все заказы</h2>
+
+<div class="accordion" id="accordionOrders">
+    @foreach (var order in Model)
+    {
+        var random = Guid.NewGuid();
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="@random">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#order-@order.Id" aria-expanded="true" aria-controls="order-@order.Id">
+                    Заказ от @order.OrderDate.ToShortDateString() на сумму @order.Total руб.
+                </button>
+            </h2>
+            <div id="order-@order.Id" class="accordion-collapse collapse showing" aria-labelledby="@random" data-bs-parent="#accordionOrders">
+                <div class="accordion-body">
+                    @foreach (var orderDetail in order.OrderDetails)
+                    {
+                        <h6>Игра: @orderDetail.Game.Name в количестве @orderDetail.Amount шт.</h6>
+                    }
+                </div>
+            </div>
+
+        </div>
+    }
+</div>
